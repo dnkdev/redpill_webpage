@@ -1,0 +1,175 @@
+:root {
+    font-family: Cantarell, Ubuntu, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --matrix-content: "011";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: "matrix";
+}
+body{
+    position:relative;
+    background-color: #111;
+}
+@font-face {
+    font-family: 'matrix';
+    src: url('./font/lcd.ttf');
+}
+
+.matrix-container{
+    position:absolute;
+    /* writing-mode: vertical-rl;
+    text-orientation:upright; */
+    font-family: "matrix";
+    font-size:20px;
+    color: rgba(7, 206, 7, 0.753);
+    transition: 1.0s;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, 14px); */
+}
+.matrix{
+    position:absolute;
+    transition: 1.0s;
+    display:flex;
+    flex-direction: column;
+}
+
+.matrix span {
+    animation: animate 5s linear forwards;
+}
+@keyframes animate {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        /* transform: translateY(0); */
+    }
+    100%{
+        opacity: 0;
+        transform: scale(0.1);
+        /* transform:translateY(100vh); */
+    }
+}
+
+/* .matrix::before{
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-family: "matrix";
+    content: var(--matrix-content);
+    font-size:24pt;
+    position:absolute;
+    color: rgba(7, 206, 7, 0.753);
+    transition: 1.0s;
+} */
+
+                        /* main */
+
+.main-container {
+    width: 100%;
+    height:90vh;
+    /* background-image: url("./img/bg.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    display:flex;
+    align-items: end;
+    justify-content: center; */
+    
+}
+
+                            /* header */
+
+header {
+    position: absolute;
+    /* top:-1px; */
+    display: flex;
+    justify-content:space-around;
+    align-items: end;
+    position: -webkit-sticky; 
+    position:sticky;
+}      
+
+                    /* sticky header navigation */
+
+#nav-right-border{
+    top:-1px;
+    width:50px;
+    height:50px;
+    border-left:25px solid #fff;
+    border-top:25px solid #fff ;
+    border-right:25px solid transparent;
+    border-bottom:25px solid transparent ;
+    
+}
+#nav-left-border{
+    top:-1px;
+    width:50px;
+    height:50px;
+    border-left:25px solid transparent ;
+    border-top:25px solid #fff ;
+    border-right:25px solid #fff ;
+    border-bottom:25px solid transparent ;
+    
+}
+
+.top#nav-left-border{
+    width:50px;
+    height:50px;
+    border-left:25px solid transparent;
+    border-top:25px solid transparent ;
+    border-right:25px solid #fff;
+    border-bottom:25px solid #fff ;
+    
+}
+.top#nav-right-border{
+    width:50px;
+    height:50px;
+    border-left:25px solid #fff ;
+    border-top:25px solid transparent ;
+    border-right:25px solid transparent ;
+    border-bottom:25px solid #fff ;
+    
+}
+
+
+nav {
+    box-shadow: 0 0 5px 0 rgba(7, 206, 7, 0.753);
+    font-size: 16px;
+    max-height: 50px;
+    padding: 1rem;
+    background-color: white;
+}
+nav ul {
+    list-style:none;
+    display:flex;
+    gap: 2rem;
+
+}
+nav ul a {
+    text-wrap: balance;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #333;
+}
+
+.theme-picker{
+    
+}
+
+                        /* projects section */
+
+.projects-container {
+    background-color:azure;
+    min-height: 500px;
+}
+
+
+                        /* service section */
+
+.service-container {
+    background-color:white;
+    min-height: 500px;
+}
+
