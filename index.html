@@ -7,51 +7,53 @@
     <link rel="stylesheet" href="style.css">
     
 </head>
-<body id="Main" >
+<body>
     <div class="matrix-container">
     </div>
-    <div class="main-container">
+    <div id="main" class="main-container">
+        <div id="Showcases">
+            <h1>Showcases</h1>
+            <hr>
+            <p>
+            It is worth to look at my <a href="https://github.com/dnkdev">Github</a>.
+            
+            </p>
+        </div>
+        <div id="Aboutme">
+            <h1>About me</h1>
+            <hr>
+            <p> 
+            My name is Daniel Daudysh.<br><br>
+            I live on the Earth in 2023. 
+            I like programming, beauty and creativity.<br>
+            I love exact those moments, when something from the unknown becomes known, especially when it happens unexpectedly and I feel that I grow that way.
+        </p>
+            
+        </div>
+        <div id="Contactme">
+            <h1>Contact me</h1>
+            <hr>
+            <p>
+                <a href="https://t.me/daudysh">Telegram</a><br>
+                <a href="https://matrix.to/#/@daniel_daudysh:matrix.org">Matrix</a>
+
+            </p>
+        </div>
     </div>
     <header>
         <!-- <div id= "nav-left-border" class="top"></div> -->
         <nav>
             <ul>
-                <li><a href="#Main">Main</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Service</a></li>
-                <li><a href="#">About me</a></li>
+                <li><a href="#Showcases" onclick="open_pop_window(event)">Showcases</a></li>
+                <li><a href="#Aboutme" onclick="open_pop_window(event)">About me</a></li>
+                <li><a href="#Contactme" onclick="open_pop_window(event)">Contact me</a></li>
                 <!-- <span class="theme-picker"></span> -->
             </ul>
         </nav>
         <!-- <div id= "nav-right-border" class="top"></div> -->
     </header>
 
-    <div class="projects-container">
-        
-    </div>
-
-    <div class="service-container">
-        
-    </div>
-
-    <!-- <div class="hero-container">
-        
-
-
-        <div class="logo">
-            
-        </div>
-       
-        <div class="title-container">
-            <div class="title">
-                dauda.dev
-            </div>
-            <p class="subtitle">
-                programming
-            </p>
-        </div>
-    </div> -->
-    <script src="app.js"></script>
+    <script src="pop.js"></script>
     <script defer src="matrix.js"></script>
 </body>
 </html>
