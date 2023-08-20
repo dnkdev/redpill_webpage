@@ -6,25 +6,30 @@ function getRandom(max) {
 }
 
 async function startLine(col) {
-    let add = document.createElement('span');
-    add.textContent += (getRandom(100) > 50) ? "1" 
-    : "0";
-    
-    col.appendChild(add);
+    if (col.children.length <= 40) {
+        let add = document.createElement('span');
+        add.textContent += (Math.random() > 0.5) ? "0" 
+        : "1";
+        col.appendChild(add);
+    }
 }
 async function generateMatrixRain() {
     const col = document.createElement('div');
     col.classList.add('matrix');
-    col.style.left = getRandom(window.innerWidth-30)+"px";
+    let w = Math.random() * window.innerWidth;//getRandom(window.innerWidth);
+    if (w > 50.0){
+        w = w - 10.0;
+    }
+    col.style.left = w+"px";
     main.appendChild(col);
 
-    let interval = setInterval(()=>startLine(col),1000-getRandom(900));
+    let interval = setInterval(async ()=>startLine(col),900-getRandom(800));
     setTimeout(()=>{
         clearInterval(interval)
         setTimeout(()=>main.removeChild(col),5000)
     },5000)
 }
 
-setInterval(()=>generateMatrixRain(),1000);
+setInterval(async ()=>generateMatrixRain(),1000);
 
 

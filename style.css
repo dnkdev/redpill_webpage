@@ -1,6 +1,7 @@
 :root {
-    --greena: rgba(7, 206, 7, 0.753);
+    --greena: rgba(7, 206, 7, 0.75);
     --green: rgba(7, 206, 7);
+    --logo-font-size: max(20px, 4vh + 1vw);
 } 
 
 @font-face {
@@ -18,22 +19,29 @@ body{
     overflow: hidden;
     position:relative;
     background-color: #111;
+    width:100vw;
+    height:100vh;
 }
+
+                    /* Matrix background */
 
 .matrix-container{
     user-select:none;
     position:absolute;
+    margin:auto;
     /* writing-mode: vertical-rl;
     text-orientation:upright; */
     font-family: "matrix", monospace;
     font-size:20px;
     color: var(--greena);
+    z-index:-1;
 }
 .matrix{
     position:absolute;
     transition: 1.0s;
     display:flex;
     flex-direction: column;
+    top:5px;
 }
 
 .matrix span {
@@ -50,9 +58,8 @@ body{
         color: var(--greena);
     }
     100%{
-        color: var(--greena);
         opacity: 0;
-        /* transform: scale(0.1); */
+        /* transform: scale(0.5); */
     }
 }
 
@@ -63,22 +70,25 @@ header {
     width: fit-content;
     left: 50%;
     bottom:1vh;
+    margin-bottom:2vh;
     transform: translate(-50%);
 }      
 
                             /* navigation */
 
 nav {
-    font-size:14px;
+    font-weight: bold;
+    font-size:max(12px,2vh);
     max-height: 50px;
-    padding: 1rem;
+    /* bottom:10px; */
     animation: nav-init-anim 1.8s ease-in forwards;
     margin:auto;
+    z-index:2;
 }
 nav ul {
     list-style:none;
     display:flex;
-    gap: 2vw;
+    gap: 3vw;
 
 }
 a {
@@ -89,6 +99,10 @@ a {
         outline: 1px solid #fff;
         color:white !important;
     }
+}
+a[href ^= "http"]{
+    content:'';
+    text-decoration: underline;
 }
 
 @keyframes nav-init-anim {
@@ -106,7 +120,7 @@ a {
 
 .main-container {
     width: 100%;
-    height:100%;
+    height: 100%;
     position:fixed;
 }
 
@@ -122,36 +136,38 @@ a {
     border-radius: 3px; 
 }
 hr{
-    border-color:var(--green);
-    max-width: 99%;
-}
-h1 {
-    color:transparent;
-    font-style: italic;
-    -webkit-text-stroke: 1px var(--green);
-}
-p{
-    padding:5px;
+    border-color:var(--greena);
+    width:99%;
+    /* transition:width var(--duration); */
+    /* transition-delay: calc(calc(var(--duration) * 5) + var(--delay)); */
 }
 #Showcases::before {
     content: "001";
     color:var(--green);
     opacity:0.5;
     float:right;
+    z-index:-1;
 }
 #Aboutme::before {
     content: "010";
     color:var(--green);
     opacity:0.5;
     float:right;
+    z-index:-1;
 }
 #Contactme::before {
     content: "011";
     color:var(--green);
     opacity:0.5;
     float:right;
+    z-index:-1;
+    background:transparent;
 }
 #Showcases, #Aboutme, #Contactme{
+    --typing-delay: 0.4s;
+    --text-delay: calc(var(--typing-delay) + 0.3s);
+    --delay: calc(var(--text-delay));
+    --duration:100ms;
     background-color: #111;
     color: #111;
     position: absolute;
@@ -161,17 +177,157 @@ p{
     padding-right:5px;
     width:fit-content;
     height:fit-content;
-    min-width: 400px;
-    max-width:80%;
-    max-height: 80vh;
-    overflow: auto; 
-    transition:all .5s;
-    scale: 0;
+    min-width: 350px;
+    max-width:75%;
+    max-height:60%;
+    /* max-height: 80vh; */
+
+    .top{
+        position: absolute;
+        opacity:1;
+        height:0;
+        width:0;
+        transition:all var(--duration) forwards;
+        z-index:-10;
+    }
+    .right{
+        position: absolute;
+        opacity:1;
+        height:0;
+        width:100%;
+        transition:all var(--duration) forwards;
+        z-index:-10;
+    }
+    .bottom{
+        position: absolute;
+        opacity:1;
+        right:0;
+        height:100%;
+        width:0;
+        transition:all var(--duration) forwards;
+        z-index:-10;
+    }
+    .left{
+        position: absolute;
+        opacity:1;
+        right:0;
+        height:0;
+        width:100%;
+        transition:all var(--duration) forwards;
+        z-index:-10;
+    }
 }
 
 .open#Showcases,.open#Aboutme, .open#Contactme {
     scale: 1;
     color: #ddd;
     inset:0;
-    border: 1px solid var(--green);
+    .top{
+        transition-delay: var(--delay);
+        top: 0;
+        left: 0;
+        border-top: 1px solid var(--green); 
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    .right{
+        transition-delay: calc(calc(var(--duration) * 2) + var(--delay));
+        top: 0;
+        left: 0;
+        border-right: 1px solid var(--green); 
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    .bottom{
+        transition-delay: calc(calc(var(--duration) * 3) + var(--delay));
+        top: 0;
+        right: 0;
+        border-bottom: 1px solid var(--green); 
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        
+    }
+    .left{
+        transition-delay: calc(calc(var(--duration) * 4) + var(--delay));
+        bottom: 0;
+        right: 0;
+        border-left: 1px solid var(--green); 
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    & hgroup > h1 {
+        animation-delay: 1s;
+        animation: 
+            typing var(--typing-delay) steps(9,end),
+            cursor .75s step-end infinite
+        ;
+    }
+    & p {
+        font-size: max(12px,2.15vh);
+        line-height: 1.3; 
+    }
+}
+section{
+    position:relative;
+    width: 100%;
+    min-height: fit-content;
+    max-height: 55vh;
+    overflow:auto; 
+}
+p{
+    transition: font-size .3s;
+    transition-delay: var(--text-delay);
+    padding:5px;
+    top:0;
+    font-size:0;
+}
+hgroup {
+    width: fit-content;
+}
+h1 {
+    font-size:max(18px,4vh);
+    overflow: hidden;
+    white-space: nowrap;
+    color:transparent;
+    font-style: italic;
+    -webkit-text-stroke: 1px var(--green);
+    letter-spacing: .15em;
+    border-right: 1px solid var(--greena);   
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+  
+@keyframes cursor {
+    from, to { border-color: transparent }
+    50% { border-color: var(--greena); }
+}
+
+    /* LOGO animations */
+
+.logo {
+    width:fit-content;
+    margin: 0 0 10vh 0;
+    color:var(--greena);
+    font-size:var(--logo-font-size);
+    font-weight: bold;
+    animation: nav-init-anim 1.8s ease-in forwards;
+}
+.signature {
+    font-family: Courier, 'Courier New', monospace;
+    font-style: italic;
+    position:absolute;
+    width:100%;
+    height:fit-content;
+    margin:var(--logo-font-size) auto auto auto;
+    top:0;
+    color:var(--greena);
+    font-size:max(2.5vh,10px);
+    white-space: nowrap;
+    animation: nav-init-anim 1.8s ease-in forwards;
 }

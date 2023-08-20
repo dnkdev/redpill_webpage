@@ -1,5 +1,4 @@
 function open_pop_window(e) {
-    console.log(e);
     let main = document.getElementById("main");
     let children = main.querySelectorAll('div');
 
@@ -14,8 +13,5 @@ function open_pop_window(e) {
         }
 
     })
-    console.log(selected_id);
     selected_node.classList.toggle('open')
-    // const pop = document.querySelector(selected_id);
-    // pop.classList.toggle('open');
 }
